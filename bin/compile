@@ -18,15 +18,11 @@ function indent() {
 BIN_DIR=$(cd $(dirname $0); pwd) # absolute path
 OPT_DIR=$(cd "$BIN_DIR/../usr"; pwd)
 
-LUA=vlc
-
 cd $BUILD_DIR
 
 mkdir -p bin
-#mkdir -p packages
-mkdir -p etc
+#mkdir -p etc
 mkdir -p usr/lib
-#mkdir -p share
 mkdir -p usr/share
 
 echo "-----> Copying vlc to bin"
@@ -34,8 +30,7 @@ cp "$OPT_DIR/bin/vlc" "bin/"
 
 echo "-----> Installing packages"
 
-#if [ "$ENV" != "local" ]; then
 cp -r "$OPT_DIR/lib/" "usr/lib/"
-cp -r "$OPT_DIR/share" "usr/share/"
-#fi
+cp -r "$OPT_DIR/share/" "usr/share/"
+#cp -r "$OPT_DIR/etc/" "etc/"
 
