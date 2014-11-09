@@ -3,17 +3,21 @@
 
 set -e
 set -o pipefail
+set -x
 
 BUILD_DIR=$1
 CACHE_DIR=$2
+env_dir=$3
 
-function indent() {
-  c='s/^/       /'
-  case $(uname) in
-    Darwin) sed -l "$c";;
-    *)      sed -u "$c";;
-  esac
-}
+unset GIT_DIR
+
+# function indent() {
+#   c='s/^/       /'
+#   case $(uname) in
+#     Darwin) sed -l "$c";;
+#     *)      sed -u "$c";;
+#   esac
+# }
 
 BIN_DIR=$(cd $(dirname $0); pwd) # absolute path
 FILENAME="vlc-linux-x64.zip"
