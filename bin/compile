@@ -22,23 +22,22 @@ LUA=vlc
 
 cd $BUILD_DIR
 
-mkdir -p bin
+#mkdir -p bin
 #mkdir -p packages
 mkdir -p etc
-mkdir -p usr
-mkdir -p lib
-mkdir -p share
+mkdir -p usr/bin
+mkdir -p usr/lib
+#mkdir -p share
 mkdir -p usr/share
 
 echo "-----> Copying vlc to bin"
-cp "$OPT_DIR/bin/vlc" "bin/"
+cp "$OPT_DIR/bin/vlc" "usr/bin/"
 
 echo "-----> Installing packages"
 
-
 if [ "$ENV" != "local" ]; then
-	cp -r "$OPT_DIR/lib/" "lib/"
-	cp -r "$OPT_DIR/share" "usr/share"
+	cp -r "$OPT_DIR/lib/" "usr/lib/"
+	cp -r "$OPT_DIR/share" "usr/share/"
 
 fi
 
