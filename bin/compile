@@ -35,31 +35,12 @@ cp "$OPT_DIR/vlc" "bin/"
 
 echo "-----> Installing packages"
 
-#SITE_CONFIG="$OPT_DIR/luarocks/luarocks/site_config.lua"
 
 if [ "$ENV" != "local" ]; then
 	cp "$OPT_DIR/lib" " /lib/"
 	cp "$OPT_DIR/share" " /usr/share"
-  #export PATH=$OPT_DIR/$STACK:$PATH
-  #echo "site_config.LUA_INCDIR=[[$OPT_DIR/../include]]" >> $SITE_CONFIG
-  #echo "site_config.LUA_LIBDIR=[[$OPT_DIR/../lib/$STACK/]]" >> $SITE_CONFIG
+
 else
   LUA=vlc
 fi
-
-# # use sed because grep halts script with -e when there is no match
-# ROCKSPEC=$(ls | sed -n 's/\.rockspec$/&/p' | head -n 1)
-#
-# if [[ -z "$ROCKSPEC" ]]; then
-#   echo "-----> Fatal Error"
-#   echo ""
-#   echo "       package.lua is no longer supported."
-#   echo ""
-#   echo "       You must provide a rockspec with your app."
-#   echo "       See https://github.com/leafo/heroku-buildpack-lua/blob/master/README.md"
-#   echo ""
-#   exit 1
-# fi
-
-# $LUA "$OPT_DIR/prepare.lua" $ROCKSPEC $OPT_DIR 2>&1 | indent
 
