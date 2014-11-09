@@ -31,16 +31,14 @@ mkdir -p share
 mkdir -p usr/share
 
 echo "-----> Copying vlc to bin"
-cp "$OPT_DIR/vlc" "bin/"
+cp "$OPT_DIR/bin/vlc" "bin/"
 
 echo "-----> Installing packages"
 
 
 if [ "$ENV" != "local" ]; then
-	cp "$OPT_DIR/lib" " /lib/"
-	cp "$OPT_DIR/share" " /usr/share"
+	cp -r "$OPT_DIR/lib/" "lib/"
+	cp -r "$OPT_DIR/share" "usr/share"
 
-else
-  LUA=vlc
 fi
 
