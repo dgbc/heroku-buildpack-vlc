@@ -41,5 +41,5 @@ cp -r "$CACHE_DIR/usr/lib/" "usr/lib/"
 cp -r "$CACHE_DIR/usr/share/" "usr/share/"
 
 PROFILE_PATH="$BUILD_DIR/.profile.d/vlc.sh"
-echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:usr/lib/lib"' >> $PROFILE_PATH
+echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:usr/lib/lib:$HOME/usr/lib/lib:/app/usr/lib/lib"' >> $PROFILE_PATH
 #rm -rf $CACHE_DIR/*
