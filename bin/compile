@@ -16,21 +16,24 @@ function indent() {
 }
 
 BIN_DIR=$(cd $(dirname $0); pwd) # absolute path
-OPT_DIR=$(cd "$BIN_DIR/../usr"; pwd)
+FILENAME="vlc-linux-x64.zip"
+url="https://s3.amazonaws.com/vlc-buildpack/vlc-linux-x64.zip"
+cd $CACHE_DIR
+curl $url -s -o $FILENAME
+unzip -o -q $FILENAME
 
 cd $BUILD_DIR
 
 mkdir -p bin
-#mkdir -p etc
 mkdir -p usr/lib
 mkdir -p usr/share
 
 echo "-----> Copying vlc to bin"
-cp "$OPT_DIR/bin/vlc" "bin/"
+cp "$CACHE_DIR/usr/bin/vlc" "bin/"
 
 echo "-----> Installing packages"
 
-cp -r "$OPT_DIR/lib/" "usr/lib/"
-cp -r "$OPT_DIR/share/" "usr/share/"
-#cp -r "$OPT_DIR/etc/" "etc/"
+cp -r "$CACHE_DIR/usr/lib/" "usr/lib/"
+cp -r "$CACHE_DIR/usr/share/" "usr/share/"
 
+#rm -rf $CACHE_DIR/*
